@@ -14,6 +14,13 @@
 
 @implementation AddTaskViewController
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.taskNameInput) {
+        [textField resignFirstResponder];
+    }
+    return YES;
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];

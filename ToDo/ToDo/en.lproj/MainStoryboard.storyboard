@@ -87,6 +87,9 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="40v-sr-7Pk">
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Kpk-uU-6Mm" id="2pE-ns-xLE"/>
+                                                    </connections>
                                                 </textField>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Task Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4J-PJ-jQi">
                                                     <constraints>
@@ -101,7 +104,7 @@
                                         </view>
                                         <constraints>
                                             <constraint firstItem="v4J-PJ-jQi" firstAttribute="top" secondItem="vaT-hN-pIQ" secondAttribute="top" constant="11" id="AjO-1k-lxy"/>
-                                            <constraint firstItem="40v-sr-7Pk" firstAttribute="centerY" secondItem="vaT-hN-pIQ" secondAttribute="centerY" type="default" id="B7b-k2-iOh"/>
+                                            <constraint firstItem="40v-sr-7Pk" firstAttribute="centerY" secondItem="vaT-hN-pIQ" secondAttribute="centerY" type="user" id="B7b-k2-iOh"/>
                                             <constraint firstItem="40v-sr-7Pk" firstAttribute="leading" secondItem="v4J-PJ-jQi" secondAttribute="trailing" constant="8" symbolic="YES" type="user" id="MhS-q8-0Eh"/>
                                             <constraint firstItem="v4J-PJ-jQi" firstAttribute="leading" secondItem="vaT-hN-pIQ" secondAttribute="leading" constant="20" type="default" id="N9X-KA-2ir"/>
                                             <constraint firstItem="40v-sr-7Pk" firstAttribute="leading" secondItem="v4J-PJ-jQi" secondAttribute="trailing" constant="8" type="user" id="Vwc-ZW-LBw"/>
@@ -116,6 +119,9 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="iqt-zT-wuC"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="RNS-lv-9hI"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="taskNameInput" destination="B7b-k2-iOh" id="TK6-R3-Hj8"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5EH-7D-5VP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -137,17 +143,6 @@
             <point key="canvasLocation" x="896" y="64"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="AddTaskViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddTaskViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="ToDoListMasterViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ToDoListMasterViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
