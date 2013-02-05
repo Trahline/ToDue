@@ -10,16 +10,49 @@
 
 #import "ToDoListDetailViewController.h"
 
-@interface ToDoListMasterViewController () {
+#import "AddTaskViewController.h"
+
+#import "Task.h"
+
+#import "TaskDataController.h"
+
+/*@interface ToDoListMasterViewController () {
     NSMutableArray *_objects;
 }
+@end*/
+
+@interface ToDoListMasterViewController ()
+@property (strong, nonatomic) IBOutlet UITableView *taskArray;
+
 @end
 
 @implementation ToDoListMasterViewController
 
+- (IBAction)done:(UIStoryboardSegue *)segue
+{
+    if ([[segue identifier] isEqualToString:@"ReturnInput"]) {
+        
+        AddTaskViewController *addController = [segue sourceViewController];
+        if (addController.NameInput) {
+            [self.dataController addTaskWithTask:addController.NameInput];
+            [[self tableView] reloadData];
+        }
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    }
+    [[self tableView] reloadData];
+}
+
+- (IBAction)cancel:(UIStoryboardSegue *)segue
+{
+    if ([[segue identifier] isEqualToString:@"CancelInput"]) {
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    }
+}
+
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    self.dataController = [[TaskDataController alloc] init];
 }
 
 - (void)viewDidLoad
@@ -27,7 +60,7 @@
     [super viewDidLoad];
     
 	// Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    //self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
     /*UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;*/
@@ -39,7 +72,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)insertNewObject:(id)sender
+/*- (void)insertNewObject:(id)sender
 {
     if (!_objects) {
         _objects = [[NSMutableArray alloc] init];
@@ -47,7 +80,7 @@
     [_objects insertObject:[NSDate date] atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-}
+}*/
 
 #pragma mark - Table View
 
@@ -58,15 +91,23 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _objects.count;
+    return [self.dataController countOfList];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
-    NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = [object description];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *CellIdentifier = @"TaskCell";
+    
+    static NSDateFormatter *formatter = nil;
+    if (formatter == nil) {
+        formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateStyle:NSDateFormatterMediumStyle];
+    }
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    Task *taskAtIndex = [self.dataController objectInListAtIndex:indexPath.row];
+    [[cell textLabel] setText:taskAtIndex.name];
+    //[[cell detailTextLabel] setText:[formatter stringFromDate:(NSDate *)taskAtIndex.date]];
     return cell;
 }
 
@@ -79,8 +120,10 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [_objects removeObjectAtIndex:indexPath.row];
+        //IMPLEMENT REMOVE USING EDIT. YOU HAVE TO MAKE A REMOVE FUNCITON IN THE DATA CONTROLLER AND CALL IT HERE
+        [self.dataController removeItem:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [[self tableView] reloadData];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
@@ -93,22 +136,23 @@
 }
 */
 
-/*
+
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the item to be re-orderable.
     return YES;
 }
-*/
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = _objects[indexPath.row];
-        [[segue destinationViewController] setDetailItem:object];
+        ToDoListDetailViewController *detailViewController = [segue destinationViewController];
+        
+        detailViewController.task = [self.dataController objectInListAtIndex:[self.tableView indexPathForSelectedRow].row];
     }
+    [[self tableView] reloadData];
 }
 
 @end

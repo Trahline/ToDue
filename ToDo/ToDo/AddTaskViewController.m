@@ -8,14 +8,30 @@
 
 #import "AddTaskViewController.h"
 
+#import "Task.h"
+
 @interface AddTaskViewController ()
 
 @end
 
 @implementation AddTaskViewController
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([[segue identifier] isEqualToString:@"ReturnInput"]) {
+        
+        if ([self.taskNameInput.text length]) {
+            Task *task;
+            task = [[Task alloc] initWithName:self.taskNameInput.text];
+            self.NameInput = task;
+        }
+    }
+    [[self tableView] reloadData];
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    if (textField == self.taskNameInput) {
+    if (textField == self.taskNameInput)
+    {
         [textField resignFirstResponder];
     }
     return YES;

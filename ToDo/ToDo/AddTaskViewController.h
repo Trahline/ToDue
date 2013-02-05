@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class Task;
+
 @interface AddTaskViewController : UITableViewController  <UITextFieldDelegate>
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *taskNameInput;
+@property (weak, nonatomic) IBOutlet UITextField *taskNameInput;
+
+@property (strong, nonatomic) Task *NameInput;
 
 @end

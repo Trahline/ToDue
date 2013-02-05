@@ -57,10 +57,13 @@
                     <navigationItem key="navigationItem" title="Master" id="36">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="g6G-2E-2aq">
                             <connections>
-                                <segue destination="RHJ-Sp-szh" kind="modal" identifier="TaskSegue" id="Wn6-Oh-H2w"/>
+                                <segue destination="RHJ-Sp-szh" kind="modal" identifier="" id="Wn6-Oh-H2w"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="taskArray" destination="13" id="cGP-Mx-1iE"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="17" sceneMemberID="firstResponder"/>
             </objects>
@@ -116,14 +119,23 @@
                         </sections>
                     </tableView>
                     <navigationItem key="navigationItem" id="mRM-5Q-Qsr">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="iqt-zT-wuC"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="RNS-lv-9hI"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="iqt-zT-wuC">
+                            <connections>
+                                <segue destination="SZa-S4-Uoe" kind="unwind" identifier="CancelInput" unwindAction="cancel:" id="dYx-rr-LSG"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="RNS-lv-9hI">
+                            <connections>
+                                <segue destination="SZa-S4-Uoe" kind="unwind" identifier="ReturnInput" unwindAction="done:" id="Ngk-pn-Yhy"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="taskNameInput" destination="B7b-k2-iOh" id="TK6-R3-Hj8"/>
+                        <outlet property="taskNameInput" destination="40v-sr-7Pk" id="gyM-uJ-bfF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5EH-7D-5VP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="SZa-S4-Uoe" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1430" y="64"/>
         </scene>

@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class TaskDataController;
+
 @interface ToDoListMasterViewController : UITableViewController
+
+@property (strong, nonatomic) TaskDataController *dataController;
+
+- (IBAction)done:(UIStoryboardSegue *)segue;
+
+- (IBAction)cancel:(UIStoryboardSegue *)segue;
 
 @end

@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ToDoListDetailViewController : UIViewController
+@class Task;
 
-@property (strong, nonatomic) id detailItem;
+@interface ToDoListDetailViewController : UITableViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *taskNameLabel;
+
+@property (strong, nonatomic) Task *task;
+
 @end

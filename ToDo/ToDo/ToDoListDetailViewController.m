@@ -8,6 +8,8 @@
 
 #import "ToDoListDetailViewController.h"
 
+#import "Task.h"
+
 @interface ToDoListDetailViewController ()
 - (void)configureView;
 @end
@@ -16,10 +18,10 @@
 
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(id)newDetailItem
+- (void)setTask:(Task *)task
 {
-    if (_detailItem != newDetailItem) {
-        _detailItem = newDetailItem;
+    if (_task != task) {
+        _task = task;
         
         // Update the view.
         [self configureView];
@@ -29,12 +31,14 @@
 - (void)configureView
 {
     // Update the user interface for the detail item.
+    Task *theSighting = self.task;
+    
+  
+    if (theSighting) {
+        self.taskNameLabel.text = theSighting.name;
 
-    if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
     }
 }
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
