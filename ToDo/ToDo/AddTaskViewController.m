@@ -33,6 +33,7 @@
     if (textField == self.taskNameInput)
     {
         [textField resignFirstResponder];
+        [self performSegueWithIdentifier:@"ReturnInput" sender:self];
     }
     return YES;
 }
