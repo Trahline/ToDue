@@ -10,7 +10,7 @@
 
 @interface Task : NSObject
 
-@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSMutableAttributedString *name;
 
 -(id)initWithName:(NSString *)name;
 

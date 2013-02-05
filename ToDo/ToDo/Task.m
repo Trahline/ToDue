@@ -15,8 +15,25 @@
 {
     self = [super init];
     if (self) {
-        _name = name;
+        
+        
+        self.name = [[NSMutableAttributedString alloc] initWithString: name];
+        
+        NSMutableAttributedString *tots = [[NSMutableAttributedString alloc] initWithString:name];
+        
+        [tots addAttribute:NSStrikethroughStyleAttributeName value:@0 range:NSMakeRange(0, [tots length])];
+        [tots addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0, [tots length])];
+        
+        self.name = tots;
+        
+        
         return self;
+        
+        
+        
+        
+        
+        
     }
     return nil;
 }

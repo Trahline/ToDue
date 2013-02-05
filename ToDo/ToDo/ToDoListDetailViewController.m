@@ -35,7 +35,7 @@
     
   
     if (theSighting) {
-        self.taskNameLabel.text = theSighting.name;
+        self.taskNameLabel.attributedText = theSighting.name;
 
     }
 }

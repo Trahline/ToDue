@@ -106,7 +106,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     Task *taskAtIndex = [self.dataController objectInListAtIndex:indexPath.row];
-    [[cell textLabel] setText:taskAtIndex.name];
+    [[cell textLabel] setAttributedText:taskAtIndex.name];
     //[[cell detailTextLabel] setText:[formatter stringFromDate:(NSDate *)taskAtIndex.date]];
     return cell;
 }
