@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		710E929816C1755400DFAF20 /* ReadMe in Resources */ = {isa = PBXBuildFile; fileRef = 710E929716C1755400DFAF20 /* ReadMe */; };
 		712C3EA116BADD45000BB82F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712C3EA016BADD45000BB82F /* UIKit.framework */; };
 		712C3EA316BADD45000BB82F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712C3EA216BADD45000BB82F /* Foundation.framework */; };
 		712C3EA516BADD45000BB82F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712C3EA416BADD45000BB82F /* CoreGraphics.framework */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		710E929716C1755400DFAF20 /* ReadMe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe; sourceTree = "<group>"; };
 		712C3E9C16BADD45000BB82F /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		712C3EA016BADD45000BB82F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		712C3EA216BADD45000BB82F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -98,6 +100,7 @@
 				712C3EAF16BADD45000BB82F /* ToDoListAppDelegate.h */,
 				712C3EB016BADD45000BB82F /* ToDoListAppDelegate.m */,
 				712C3EB816BADD45000BB82F /* MainStoryboard.storyboard */,
+				710E929716C1755400DFAF20 /* ReadMe */,
 				71E7BF6616C0AD4F00337B5A /* Task.h */,
 				71E7BF6716C0AD4F00337B5A /* Task.m */,
 				712C3EBB16BADD45000BB82F /* ToDoListMasterViewController.h */,
@@ -184,6 +187,7 @@
 				712C3EB516BADD45000BB82F /* Default@2x.png in Resources */,
 				712C3EB716BADD45000BB82F /* Default-568h@2x.png in Resources */,
 				712C3EBA16BADD45000BB82F /* MainStoryboard.storyboard in Resources */,
+				710E929816C1755400DFAF20 /* ReadMe in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
